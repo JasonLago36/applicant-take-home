@@ -1,0 +1,23 @@
+.prizeout-redemption-button {
+    --prizeout-redemption-color: #DFE2E5;
+    --prizeout-redemption-color-selected: #6492FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 5rem;
+    height: 1.875rem;
+    cursor: pointer;
+    font-size: smaller;
+
+    &__not-selected {
+        background-color: var(--prizeout-redemption-color);
+        color: black;
+    }
+
+    &__selected {
+        background-color: var(--color-primary);
+        color: white;
+    }
+    
+}

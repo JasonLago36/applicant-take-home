@@ -4,12 +4,14 @@ import { AnyAction } from 'redux';
 import commonReducer, { commonInitialState } from './slices/common-slice';
 import offerConfigReducer, { offersInitialState } from './slices/offers-slice';
 import checkoutReducer, { checkoutInitialState } from './slices/checkout-slice';
+import selectedOfferReducer, { selectedOfferInitialState } from './slices/chosen-offer-slice';
 
 const store = configureStore({
     reducer: {
         checkout: checkoutReducer,
         common: commonReducer,
         offers: offerConfigReducer,
+        selected: selectedOfferReducer,
     },
 });
 
@@ -21,6 +23,7 @@ export const RootInitialState: RootState = {
     checkout: checkoutInitialState,
     common: commonInitialState,
     offers: offersInitialState,
+    selected: selectedOfferInitialState,
 };
 
 export default store;

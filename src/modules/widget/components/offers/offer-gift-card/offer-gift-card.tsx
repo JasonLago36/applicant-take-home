@@ -2,7 +2,10 @@ import React from 'react';
 import Classnames from 'classnames';
 import { GiftCard, BonusTag } from '../../../../../components/common/';
 import { PrizeoutOffer } from '../../../../../slices/offers-slice';
-
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../../../store';
+import { SelectedOffer, selectedOfferId } from '../../../../../slices/chosen-offer-slice';
+import { useAppSelector } from '../../../../../hooks';
 import './offer-gift-card.less';
 
 interface OfferGiftCardProps {
@@ -11,8 +14,8 @@ interface OfferGiftCardProps {
 }
 
 export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler }): React.ReactElement => {
-    let activeOfferId;
-
+    const offerId = useAppSelector((state) => state.selected.selectedOfferId);
+    const activeOfferId = offerId;
     const firstGiftCard = offer.giftcard_list[0];
     const offerType = firstGiftCard.display_monetary_bonus ? 'monetary' : 'percentage';
     const offerValue = firstGiftCard.display_bonus;
@@ -25,11 +28,19 @@ export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHand
             onClickHandler();
         }
     };
+    const dispatch = useDispatch<AppDispatch>();
+    const selectOffer = () => {
+        const selectedOffer = firstGiftCard;
+        dispatch(SelectedOffer(offer));
+        dispatch(selectedOfferId(selectedOffer.checkout_value_id));
+    };
 
     return (
         <div
             className={classes}
-            onClick={() => onClickHandler()}
+            onClick={() => {
+                onClickHandler(), selectOffer();
+            }}
             onKeyDown={(event) => selectOfferOnEnter(event)}
             role="button"
             tabIndex={0}

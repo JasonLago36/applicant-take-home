@@ -23,10 +23,10 @@ export const GiftCard: React.FC<GiftCardProps> = ({ name, value, imgUrl, altText
         <div className={classes}>
             <GiftCardImage imgUrl={imageUrl} altText={imageAltText} />
             <div className="gift-card__row">
-                <p className="gift-card__name">
+                <span className="gift-card-name">
                     <strong>{name}</strong>
-                </p>
-                {value && <span className="gift-card__value">{value}</span>}
+                </span>
+                {value && <span className="gift-card-value">{value}</span>}
             </div>
         </div>
     );

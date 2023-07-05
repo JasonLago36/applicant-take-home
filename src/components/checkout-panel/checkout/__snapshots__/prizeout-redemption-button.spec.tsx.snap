@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test PrizeOutRedemption Component Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="prizeout-redemption-button prizeout-redemption-button__not-selected"
+    role="button"
+  >
+    10
+  </div>
+</DocumentFragment>
+`;
